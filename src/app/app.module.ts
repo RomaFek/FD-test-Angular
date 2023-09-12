@@ -16,6 +16,11 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask, IConfig } from 'ngx-mask';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ImageItemComponent } from './components/image-item/image-item.component';
+import { ImagesListComponent } from './components/images-list/images-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DateFormatPipe } from './date-format.pipe';
+import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -25,7 +30,11 @@ const maskConfig: Partial<IConfig> = {
   declarations: [
     AppComponent,
     RegistrationFormComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    ImageItemComponent,
+    ImagesListComponent,
+    DateFormatPipe,
+    NavigationMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +51,8 @@ const maskConfig: Partial<IConfig> = {
     NgxMaskDirective,
     NgxMaskPipe,
     MatAutocompleteModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
   ],
   providers: [provideNgxMask(maskConfig)],
   bootstrap: [AppComponent]
