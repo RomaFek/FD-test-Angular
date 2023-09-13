@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageItemComponent } from './image-item.component';
+import { ClockComponent } from './clock.component';
 
-describe('ImageItemComponent', () => {
-  let component: ImageItemComponent;
-  let fixture: ComponentFixture<ImageItemComponent>;
+describe('ClockComponent', () => {
+  let component: ClockComponent;
+  let fixture: ComponentFixture<ClockComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ImageItemComponent]
+      declarations: [ClockComponent]
     });
-    fixture = TestBed.createComponent(ImageItemComponent);
+    fixture = TestBed.createComponent(ClockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

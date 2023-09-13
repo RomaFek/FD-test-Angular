@@ -1,7 +1,7 @@
-<div class="image-list">
-    <div *ngFor="let image of images" class="image-item">
-      <a [routerLink]="['/images', image.id]" class="image-link">
-        <img [src]="image.urls.small" alt="{{ image.user.username }}" class="image-thumbnail">
+<div class="image__list">
+    <div *ngFor="let image of images" class="image__item">
+      <a [routerLink]="['/images', image.id]" class="image__link">
+        <img [src]="image.urls.small" alt="{{ image.user.username }}" class="image__thumbnail">
       </a>
     </div>
   </div>
