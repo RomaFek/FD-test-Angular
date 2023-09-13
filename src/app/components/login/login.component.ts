@@ -10,7 +10,7 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private router: Router) {}
+      constructor(private router: Router) { }
 
   onSubmit(): void {
     if (this.username === '123' && this.password === '123') {

@@ -9,10 +9,10 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
   styleUrls: ['./registration-form.component.css'],
 })
 export class RegistrationFormComponent {
-  
+
   registrationForm: FormGroup;
 
-  autocompleteOptions: string[] = [ 
+  autocompleteOptions: string[] = [
     'Apple',
     'Bananas',
     'Mango',
@@ -27,7 +27,7 @@ export class RegistrationFormComponent {
       lastName: ['', Validators.required],
       surname: [''],
       birthDate: ['', Validators.required],
-      gender: [''], 
+      gender: [''],
       phoneNumber: ['', [Validators.required]],
       email: ['', Validators.email],
       workplace: [''],
@@ -49,22 +49,22 @@ export class RegistrationFormComponent {
 
   markTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach(control => {
-        control.markAsTouched();
+      control.markAsTouched();
     });
   }
 
   openConfirm(): void {
     if (this.registrationForm.valid) {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '300px',
-      data: { message: 'Вы уверены, что хотите отправить форму?' }
-    });
-  
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Yes');
-      }
-    });
+      const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+        width: '300px',
+        data: { message: 'Вы уверены, что хотите отправить форму?' }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          console.log('Yes');
+        }
+      });
+    }
   }
-}
 }

@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'images', component: ImagesListComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'images/:id', component: ImageItemComponent },
+  { path: 'testlogin', component: UnitTestComponent },
   { path: '', component: NavigationMenuComponent },
-  { path: '/testlogin', component: UnitTestComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,42 @@
+.unittest__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.unittest__form {
+    width: 300px;
+    text-align: center;
+}
+
+.unittest__input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.unittest__error {
+    color: red;
+    font-size: 14px;
+}
+
+.unittest__button {
+    width: 50%;
+    background-color: #525252;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.unittest__button:hover {
+    background: #000000;
+    transform: scale(1.1);
+}
+
+.unittest__button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

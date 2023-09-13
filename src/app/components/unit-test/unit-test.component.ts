@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-unit-test',
@@ -8,32 +7,17 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./unit-test.component.css']
 })
 export class UnitTestComponent {
-  registrationForm: FormGroup;
+  loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog) {
-    this.registrationForm = this.fb.group({
+  constructor(private fb: FormBuilder) {
+    this.loginForm = this.fb.group({
       login: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
-  isInvalid(controlName: string): boolean {
-    const control = this.registrationForm.get(controlName);
-    return control ? (control.invalid && (control.touched || control.dirty)) : false;
+  isInvalid(controlName: string) {
+    const control = this.loginForm.get(controlName);
+    return control ? (control.invalid && (control.dirty || control.touched)) : false;
   }
-
-  onSubmit() {
-    if (this.registrationForm.valid) {
-      console.log(this.registrationForm.value);
-    } else {
-      this.markTouched(this.registrationForm);
-    }
-  }
-
-  markTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach(control => {
-        control.markAsTouched();
-    });
-  }
-
 }
