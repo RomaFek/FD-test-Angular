@@ -27,7 +27,7 @@ export class RegistrationFormComponent {
       lastName: ['', Validators.required],
       surname: [''],
       birthDate: ['', Validators.required],
-      gender: ['', Validators.required], 
+      gender: [''], 
       phoneNumber: ['', [Validators.required]],
       email: ['', Validators.email],
       workplace: [''],

@@ -6,6 +6,7 @@ import { RegistrationFormComponent } from './components/registration-form/regist
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './components/login/login.component';
+import { UnitTestComponent } from './components/unit-test/unit-test.component';
 
 const routes: Routes = [
   { path: 'registration', component: RegistrationFormComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'images/:id', component: ImageItemComponent },
   { path: '', component: NavigationMenuComponent },
+  { path: '/testlogin', component: UnitTestComponent },
 ];
 
 @NgModule({

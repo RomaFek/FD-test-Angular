@@ -1,4 +1,10 @@
+.content__reg{
+  background-color: #fff5f1;
+  display: flex;
+}
+
 form {
+  background-color: #e2e2e2;
     max-width: 600px;
     margin: 30px auto 0;
     padding: 20px;
@@ -50,10 +56,23 @@ button[type="submit"]:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
   }
 
-.date__bD {
-    width: 48%; 
+.birthD {
+    width: 50%; 
+  }
+
+  .gender__radio {
+    background: #4a4a4a;
+    margin-bottom: 30px;
+    width: 49%; 
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
   
 mat-form-field {

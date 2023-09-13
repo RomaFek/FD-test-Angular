@@ -22,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DateFormatPipe } from './date-format.pipe';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { LoginComponent } from './components/login/login.component';
+import { ClockComponent } from './components/clock/clock.component';
+import { UnitTestComponent } from './components/unit-test/unit-test.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -36,7 +38,9 @@ const maskConfig: Partial<IConfig> = {
     ImagesListComponent,
     DateFormatPipe,
     NavigationMenuComponent,
-    LoginComponent
+    LoginComponent,
+    ClockComponent,
+    UnitTestComponent,
   ],
   imports: [
     BrowserModule,

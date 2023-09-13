@@ -1,16 +1,16 @@
-.image-list {
+.image__list {
+    background-color: #fff5f1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
   }
   
-  .image-item {
+  .image__item {
     width: 500px;
     margin: 10px 0;
   }
   
-  .image-link {
+  .image__link {
     text-decoration: none;
     display: block;
     border: 1px solid #ccc;
@@ -19,11 +19,11 @@
     transition: transform 0.2s ease-in-out;
   }
   
-  .image-link:hover {
+  .image__link:hover {
     transform: scale(1.05);
   }
   
-  .image-thumbnail {
+  .image__thumbnail {
     max-width: 100%;
     height: auto;
     display: block;

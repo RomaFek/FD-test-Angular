@@ -1,4 +1,5 @@
-<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+<div class="content__reg">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <h2>Форма для заполнения</h2>
     <mat-card>
         <mat-card-content>
@@ -29,28 +30,24 @@
     </mat-form-field>
 
     <div class="date__bD__container">
-        <!-- <mat-radio-group class="date__bD" aria-label="Select an option" formControlName="gender" required>
-          <mat-radio-button value="Мужской">Мужской</mat-radio-button>
-          <mat-radio-button value="Женский">Женский</mat-radio-button>
-          <mat-hint *ngIf="isInvalid('gender')">Это поле обязательно</mat-hint>
-        </mat-radio-group> -->
-            <label class="date__bD" aria-label="Select an option" [class.invalid]="isInvalid('gender')">
-              Мужской
-              <input type="radio" name="gender" formControlName="gender" value="Мужской">
-            </label>
-            <label class="date__bD" aria-label="Select an option" [class.invalid]="isInvalid('gender')">
-              Женский
-              <input type="radio" name="gender" formControlName="gender" value="Женский">
-            </label>
-            <mat-hint *ngIf="isInvalid('gender')">Это поле обязательно</mat-hint>
+      <div class="gender__radio">
+        <mat-radio-group  aria-label="Select an option" formControlName="gender" required>
+        <mat-radio-button value="Мужской">Мужской</mat-radio-button>
+        <mat-radio-button value="Женский">Женский</mat-radio-button>
+        </mat-radio-group>
+      </div>
 
-      
+      <div class="birthD">
         <mat-form-field>
-          <input matInput class="date__bD" [matDatepicker]="picker" formControlName="birthDate" placeholder="Дата рождения">
+          <input matInput  [matDatepicker]="picker" formControlName="birthDate" placeholder="Дата рождения">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-hint *ngIf="isInvalid('birthDate')">Это поле обязательно</mat-hint>
         </mat-form-field>
+      </div>
+        
+            
+        
     </div>
 
     <mat-form-field>
@@ -73,4 +70,4 @@
 
     <button type="submit" mat-raised-button color="primary" (click)="openConfirm()">Отправить</button>
 </form>
-  
+</div>
