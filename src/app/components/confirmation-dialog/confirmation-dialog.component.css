@@ -1,0 +1,25 @@
+button {
+    background-color: #575757;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+button:hover {
+    background-color: #2c2c2c;
+  }
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; 
+  }
+  
+mat-dialog-actions button {
+    flex: 1; 
+    margin: 0 5px;
+  }
