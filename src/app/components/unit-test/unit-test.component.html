@@ -1,12 +1,12 @@
 <div class="unittest__container">
   <form class="unittest__form" [formGroup]="loginForm">
     <mat-form-field>
-      <input class="unittest__input" formControlName="login" matInput formControlName="login" placeholder="Логин" required>
+      <input class="unittest__input" matInput formControlName="login" placeholder="Логин" required>
       <mat-error class="unittest__error" *ngIf="isInvalid('login')">Введите логин</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input class="unittest__input" formControlName="password" matInput type="password" formControlName="password" placeholder="Пароль" required>
+      <input class="unittest__input" matInput type="password" formControlName="password" placeholder="Пароль" required>
       <mat-error class="unittest__error" *ngIf="isInvalid('password')">Минимум 6 символов</mat-error>
     </mat-form-field>
 

@@ -12,9 +12,7 @@ describe('UnitTestComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [UnitTestComponent],
-      imports: [ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule], 
+      imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule],
     });
     fixture = TestBed.createComponent(UnitTestComponent);
     component = fixture.componentInstance;
@@ -26,25 +24,31 @@ describe('UnitTestComponent', () => {
   });
 
   it('должна отображаться ошибка для поля "Логин", когда оно было касано и невалидно', () => {
+    const errorElement = fixture.nativeElement.querySelector('.unittest__error');
+    expect(errorElement).toBeFalsy();
+
     const loginControl = component.loginForm.get('login');
     loginControl && loginControl.setValue('');
-    loginControl && loginControl.markAsTouched(); 
+    loginControl && loginControl.markAsTouched();
 
     fixture.detectChanges();
 
-    const errorElement = fixture.nativeElement.querySelector('.unittest__error');
-    expect(errorElement.textContent).toContain('Введите логин');
+    const updatedErrorElement = fixture.nativeElement.querySelector('.unittest__error');
+    expect(updatedErrorElement.textContent).toContain('Введите логин');
   });
 
   it('должна отображаться ошибка для поля "Пароль", когда оно было касано и невалидно', () => {
+    const errorElement = fixture.nativeElement.querySelector('.unittest__error');
+    expect(errorElement).toBeFalsy();
+
     const passwordControl = component.loginForm.get('password');
     passwordControl && passwordControl.setValue('abc');
-    passwordControl && passwordControl.markAsTouched(); 
+    passwordControl && passwordControl.markAsTouched();
 
     fixture.detectChanges();
 
-    const errorElement = fixture.nativeElement.querySelector('.unittest__error');
-    expect(errorElement.textContent).toContain('Минимум 6 символов');
+    const updatedErrorElement = fixture.nativeElement.querySelector('.unittest__error');
+    expect(updatedErrorElement.textContent).toContain('Минимум 6 символов');
   });
 
   it('должна быть заблокирована кнопка "Вход", когда форма невалидна', () => {
