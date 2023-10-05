@@ -1,4 +1,5 @@
 <div class="content__reg">
+  <button mat-button class="onMainBtn" color="primary" [routerLink]="['/']">На главную</button>
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <h2>Форма для заполнения</h2>
     <mat-card>
@@ -47,11 +48,10 @@
       </div>
 
 
-
     </div>
 
     <mat-form-field>
-      <input matInput formControlName="phoneNumber" mask="+0(000) 000-00-00" placeholder="Номер телефона" />
+      <input matInput formControlName="phoneNumber" mask="+0(000) 000-00-00" placeholder="Номер телефона"/>
       <mat-hint *ngIf="isInvalid('phoneNumber')">Это поле обязательно</mat-hint>
     </mat-form-field>
 

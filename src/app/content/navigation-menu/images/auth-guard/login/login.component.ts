@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,12 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
+  public username: string = '';
+  public password: string = '';
 
-      constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
-  onSubmit(): void {
+  public onSubmit(): void {
     if (this.username === '123' && this.password === '123') {
       sessionStorage.setItem('authenticated', 'true');
 

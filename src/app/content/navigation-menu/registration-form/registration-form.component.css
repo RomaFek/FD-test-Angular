@@ -1,6 +1,9 @@
 .content__reg {
   background-color: #fff5f1;
   display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 form {
