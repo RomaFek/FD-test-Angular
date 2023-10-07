@@ -1,5 +1,5 @@
 <div class="image__list">
-  <button mat-button color="primary" [routerLink]="['/']">На главную</button>
+  <button mat-button color="primary" routerLink="/">На главную</button>
   <div *ngFor="let image of images" class="image__item">
     <a [routerLink]="['/images', image.id]" class="image__link">
       <img [src]="image.urls.small" alt="{{ image.user.username }}" class="image__thumbnail">

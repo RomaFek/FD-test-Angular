@@ -3,6 +3,7 @@
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <h2>Форма для заполнения</h2>
     <mat-card>
+      
       <mat-card-content>
         <p>Предварительный просмотр:</p>
         <p>Имя: {{ registrationForm.get('firstName')?.value }}</p>
