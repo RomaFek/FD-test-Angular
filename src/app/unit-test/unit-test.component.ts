@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'app-unit-test',
@@ -8,13 +8,20 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UnitTestComponent {
-    loginForm: FormGroup;
+    loginForm!: FormGroup<{
+        login: FormControl<string | null>;
+        password: FormControl<string | null>;
+    }>;
 
-    constructor(private fb: FormBuilder) {
-        this.loginForm = this.fb.group({
-            login: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]],
-        });
+    constructor() {
+        this._createForm()
+    }
+
+    private _createForm() {
+        this.loginForm = new FormGroup({
+            login: new FormControl(''),
+            password: new FormControl('')
+        })
     }
 
     isInvalid(controlName: string) {

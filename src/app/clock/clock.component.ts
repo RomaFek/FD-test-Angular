@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {interval, Observable, startWith} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -8,12 +8,11 @@ import {map} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClockComponent {
-    @Input()
     public currentTime$: Observable<Date>;
 
     constructor() {
         this.currentTime$ = interval(1000).pipe(
-            startWith(0),//если убрать то часы появятся через одну секунду
+            startWith(0),
             map(() => new Date())
         );
     }
