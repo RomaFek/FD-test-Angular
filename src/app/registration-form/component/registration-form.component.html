@@ -1,0 +1,78 @@
+<div class="content__reg">
+    <button mat-button class="onMainBtn" color="primary" [routerLink]="['/']">На главную</button>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <h2>Форма для заполнения</h2>
+        <mat-card>
+
+            <mat-card-content>
+                <p>Предварительный просмотр:</p>
+                <p>Имя: {{ registrationForm.get('firstName')?.value }}</p>
+                <p>Фамилия: {{ registrationForm.get('lastName')?.value }}</p>
+                <p>Отчество: {{ registrationForm.get('surname')?.value }}</p>
+                <p>Пол: {{ registrationForm.get('gender')?.value }}</p>
+                <p>Дата рождения: {{ registrationForm.get('birthDate')?.value }}</p>
+                <p>Номер телефона: {{ registrationForm.get('phoneNumber')?.value }}</p>
+                <p>E-mail: {{ registrationForm.get('email')?.value }}</p>
+                <p>Место работы: {{ registrationForm.get('workplace')?.value }}</p>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-form-field>
+            <input matInput [formControl]="registrationForm.controls.firstName" placeholder="Имя">
+            <mat-hint *ngIf="isInvalid('firstName')">Это поле обязательно</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [formControl]="registrationForm.controls.lastName" placeholder="Фамилия">
+            <mat-hint *ngIf="isInvalid('lastName')">Это поле обязательно</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [formControl]="registrationForm.controls.surname" placeholder="Отчество">
+        </mat-form-field>
+
+        <div class="date__bD__container">
+            <div class="gender__radio">
+                <mat-radio-group aria-label="Select an option" [formControl]="registrationForm.controls.gender"
+                                 required>
+                    <mat-radio-button value="Мужской">Мужской</mat-radio-button>
+                    <mat-radio-button value="Женский">Женский</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div class="birthD">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" [formControl]="registrationForm.controls.birthDate"
+                           placeholder="Дата рождения">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-hint *ngIf="isInvalid('birthDate')">Это поле обязательно</mat-hint>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <mat-form-field>
+            <input matInput [formControl]="registrationForm.controls.phoneNumber" mask="+0(000) 000-00-00"
+                   placeholder="Номер телефона"/>
+            <mat-hint *ngIf="isInvalid('phoneNumber')">Это поле обязательно</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [formControl]="registrationForm.controls.email" placeholder="E-mail">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [formControl]="registrationForm.controls.workplace" placeholder="Место работы"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of autocompleteOptions" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary" (click)="openConfirm()">Отправить</button>
+    </form>
+</div>
