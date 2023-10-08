@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ImageService} from '../images-list/service/image.service';
 import {ImageInfo} from '../images-list/models/images.model';
 import {Observable, of, switchMap} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Component({
     selector: 'app-image-item',
@@ -21,8 +22,8 @@ export class ImageItemComponent implements OnInit {
 
     ngOnInit(): void {
         this.imgInfo$ = this.route.paramMap.pipe(
-            switchMap((params) => {
-                const imageId = params.get('id');
+            map(imageId => imageId.get('id')),
+            switchMap((imageId) => {
                 if (imageId) {
                     return this.imageService.getImageDetails(imageId);
                 }
@@ -30,6 +31,5 @@ export class ImageItemComponent implements OnInit {
             })
         );
     }
-
 }
 
