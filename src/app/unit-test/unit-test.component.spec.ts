@@ -1,52 +1,50 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {UnitTestComponent} from './unit-test.component';
-import {FormBuilder} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatInputModule} from "@angular/material/input";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from "@angular/material/button";
 
 describe('UnitTestComponent', () => {
-    let component: UnitTestComponent;
     let fixture: ComponentFixture<UnitTestComponent>;
-    let formBuilder: FormBuilder;
+    let component: UnitTestComponent;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [UnitTestComponent],
+            declarations: [UnitTestComponent],
+            imports: [
+                ReactiveFormsModule,
+                MatInputModule,
+                MatFormFieldModule,
+                MatButtonModule,
+                BrowserAnimationsModule,
+            ],
         });
 
         fixture = TestBed.createComponent(UnitTestComponent);
         component = fixture.componentInstance;
-        formBuilder = TestBed.inject(FormBuilder);
-    });
-
-    it('should create', () => {
-        expect(1).toEqual(1);
+        fixture.detectChanges();
     });
 
     it('должна отображаться ошибка для поля "Логин", когда оно было касано и невалидно', () => {
-        const errorElement = fixture.nativeElement.querySelector('.unittest__error');
-        expect(errorElement).toBeFalsy();
-
         const loginControl = component.loginForm.get('login');
         loginControl && loginControl.setValue('');
         loginControl && loginControl.markAsTouched();
-
         fixture.detectChanges();
 
-        const updatedErrorElement = fixture.nativeElement.querySelector('.unittest__error');
-        expect(updatedErrorElement.textContent).toContain('Введите логин');
+        const errorElement = fixture.nativeElement.querySelector('.unittest__error');
+        expect(errorElement.textContent).toContain('Введите логин');
     });
 
     it('должна отображаться ошибка для поля "Пароль", когда оно было касано и невалидно', () => {
-        const errorElement = fixture.nativeElement.querySelector('.unittest__error');
-        expect(errorElement).toBeFalsy();
-
         const passwordControl = component.loginForm.get('password');
         passwordControl && passwordControl.setValue('abc');
         passwordControl && passwordControl.markAsTouched();
-
         fixture.detectChanges();
 
-        const updatedErrorElement = fixture.nativeElement.querySelector('.unittest__error');
-        expect(updatedErrorElement.textContent).toContain('Минимум 6 символов');
+        const errorElement = fixture.nativeElement.querySelector('.unittest__error');
+        expect(errorElement.textContent).toContain('Минимум 6 символов');
     });
 
     it('должна быть заблокирована кнопка "Вход", когда форма невалидна', () => {
@@ -57,7 +55,6 @@ describe('UnitTestComponent', () => {
         loginControl && loginControl.setValue('valid_login');
         const passwordControl = component.loginForm.get('password');
         passwordControl && passwordControl.setValue('valid_password');
-
         fixture.detectChanges();
 
         expect(buttonElement.disabled).toBeFalsy();

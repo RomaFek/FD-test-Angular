@@ -1,31 +1,26 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {ImageService} from '../service/image.service';
 import {ImageInfo} from 'src/app/images-list/models/images.model';
-import {takeUntil} from "rxjs";
-import {DestroyService} from "../../shared/destroy.service";
+import {Observable} from "rxjs";
 
 @Component({
-  selector: 'app-images-list',
-  templateUrl: './images.component.html',
-  styleUrls: ['./images.component.css'],
-  providers: [DestroyService],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-images-list',
+    templateUrl: './images.component.html',
+    styleUrls: ['./images.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImagesComponent implements OnInit {
-  @Input()
-  public images: ImageInfo[] = [];
+    @Input()
+    public images$!: Observable<ImageInfo[]>;
 
-  constructor(
-    private imageService$: ImageService,
-    private destroy$: DestroyService,
-  ) {
-  }
+    constructor(
+        private imageService$: ImageService,
+    ) {
+    }
 
-  public ngOnInit() {
-    this.imageService$.getRandomImage().pipe(takeUntil(this.destroy$)).subscribe(data => {
-      this.images = [...data];
-    });
-  }
+    public ngOnInit() {
+        this.images$ = this.imageService$.getRandomImage()
+    }
 
 
 }
